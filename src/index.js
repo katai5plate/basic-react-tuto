@@ -17,8 +17,9 @@ const Hello = ({ name, color }) => (
 
 const App = () => (
     <div>
-        <Hello name="WA!" color="cyan" />
-        <Hello name="WA!" color="yellow" />
+        <Hello name="WA!" color="yellowgreen" />
+        <Hello name="WA!!" color="yellow" />
+        <Hello name="WA!!!" color="red" />
     </div>
 );
 
