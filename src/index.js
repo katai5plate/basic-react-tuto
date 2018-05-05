@@ -15,10 +15,12 @@ let textData = "";
 const setTextData = (event) => {
     // 変更後の値 = 変更直後の値
     textData = event.target.value;
-    // 10文字より多く入力できないようにする
-    if (textData.length > 10) {
-        textData = textData.slice(0, 10);
-    }
+    // 20文字より多く入力できないようにする
+    ((leng) => {
+        if (textData.length > leng) {
+            textData = textData.slice(0, leng);
+        }
+    })(20)
     // これがないと正常に入力操作ができない。
     // なぜならデータ変更しても自動では再描画されないから。
     render();
