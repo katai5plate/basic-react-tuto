@@ -1,44 +1,52 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const MyButton = () => (
+// 初期データ
+const items = [
+    { name: "ボタンを", color: "green" },
+    { name: "押すと", color: "brown" },
+    { name: "名前を", color: "red" },
+    { name: "追加", color: "blue" },
+];
+
+// 同期する表示名
+let nameData = "";
+// inputの入力制御・nameDataとの同期
+const setNameData = (event) => {
+    nameData = event.target.value;
+    render();
+}
+// データ追加
+const addData = () => {
+    items.push({ name: nameData, color: "black" });
+    nameData = "";
+    render();
+}
+// フォーム
+const MyForm = () => (
     <div>
-        <button onClick={() => alert("HIT!")}>
-            Click Me!
-        </button>
+        <input type="text" value={nameData} onChange={setNameData} />
+        <button onClick={addData}>Add Data</button>
     </div>
 );
 
-// 変更後の値
-let textData = "";
-// onChange、つまり値が更新された時の処理
-const setTextData = (event) => {
-    // 変更後の値 = 変更直後の値１
-    textData = event.target.value;
-    // 20文字より多く入力できないようにする
-    ((leng) => {
-        if (textData.length > leng) {
-            textData = textData.slice(0, leng);
-        }
-    })(20);
-    // 数字を使えなくする
-    if (/[0-9]|[０-９]/.test(textData)) return;
-    // 小文字を大文字にする
-    textData = textData.toUpperCase()
-    // これがないと正常に入力操作ができない。
-    // なぜならデータ変更しても自動では再描画されないから。
-    render();
-}
-const MyBox = () => (
+// 文字列表示
+const Hello = ({ name, color }) => (
     <div>
-        <input type="text" value={textData} onChange={setTextData} />
+        <p style={{ color }}>
+            Hello, {name}!
+        </p>
     </div>
 );
 
 const App = () => (
     <div>
-        <MyBox />
-        <MyButton />
+        <MyForm />
+        {
+            items.map((item) => (
+                <Hello name={item.name} color={item.color} />
+            ))
+        }
     </div>
 );
 
