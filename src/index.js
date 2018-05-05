@@ -15,11 +15,18 @@ const Hello = ({ name, color, extention }) => (
     </div>
 );
 
+const Aaa = ({ count }) => (
+    <div>
+        {("a".repeat(count))}
+    </div>
+);
+
 const App = () => (
     <div>
-        <Hello name="WA" color="yellowgreen" extention="1"/>
-        <Hello name="WA" color="yellow" extention="3"/>
-        <Hello name="WA" color="red" extention="5"/>
+        <Hello name="WA" color="yellowgreen" extention="1" />
+        <Hello name="WA" color="yellow" extention="3" />
+        <Hello name="WA" color="red" extention="5" />
+        <Aaa count="50"/>
     </div>
 );
 
