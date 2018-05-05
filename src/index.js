@@ -58,7 +58,10 @@ const Hello = ({ name, color, onDelete }) => (
 );
 // 削除処理
 const deleteItem = (index) => {
-    items.splice(index, 1);
+    // 確認メッセージ
+    if (window.confirm("Really?")) {
+        items.splice(index, 1);
+    }
     render();
 }
 
