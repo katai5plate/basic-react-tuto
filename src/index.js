@@ -23,10 +23,26 @@ const setColorData = (event) => {
     colorData = event.target.value;
     render();
 }
+// 同期する編集番号
+let editData = "";
+// inputの入力制御・editDataとの同期
+const setEditData = (event) => {
+    editData = event.target.value;
+    if(!(/[0-9]/.test(editData))) return;
+    render();
+}
 // データ追加
 const addData = () => {
-    items.push({ name: nameData, color: colorData });
+    if(editData == ""){
+        // 新規の場合
+        items.push({ name: nameData, color: colorData });
+    }else{
+        // 編集の場合
+        items[editData] = { name: nameData, color: colorData };
+    }
     nameData = "";
+    colorData = "";
+    editData = "";
     render();
 }
 
@@ -41,21 +57,34 @@ const MyForm = () => (
             色：
             <input type="text" value={colorData} onChange={setColorData} />
         </p>
+        <p>
+            番号：
+            <input type="text" value={editData} onChange={setEditData} />
+        </p>
         <button onClick={addData}>Add Data</button>
     </div>
 );
 
 // 削除可能版
-const Hello = ({ name, color, onDelete }) => (
+const Hello = ({ name, color, onEdit, onDelete }) => (
     <div>
         <p>
             <span style={{ color }}>
                 Hello, {name}!
             </span>
+            <button onClick={() => onEdit()}>EDIT</button>
             <button onClick={() => onDelete()}>DEL</button>
         </p>
     </div>
 );
+// 編集処理
+const editItem = (index) => {
+    // 確認メッセージ
+    nameData = items[index].name;
+    colorData = items[index].color;
+    editData = index;
+    render();
+}
 // 削除処理
 const deleteItem = (index) => {
     // 確認メッセージ
@@ -70,7 +99,12 @@ const App = () => (
         <MyForm />
         {
             items.map((item, index) => (
-                <Hello name={item.name} color={item.color} onDelete={() => deleteItem(index)} />
+                <Hello
+                    name={item.name}
+                    color={item.color}
+                    onEdit={() => editItem(index)}
+                    onDelete={() => deleteItem(index)}
+                />
             ))
         }
     </div>
