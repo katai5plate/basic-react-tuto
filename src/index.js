@@ -9,8 +9,15 @@ const MyButton = () => (
     </div>
 );
 
+const MyBox = () => (
+    <div>
+        <input type="text" />
+    </div>
+);
+
 const App = () => (
     <div>
+        <MyBox />
         <MyButton />
     </div>
 );
