@@ -7,21 +7,15 @@ const HelloStyle = {
     "font-size": "48px"
 };
 
-const Hello = () => (
-    <div style={ HelloStyle }>
-        Hello!
-    </div>
-);
-const World = () => (
-    <div style={ HelloStyle }>
-        WA!
+const Hello = ({ name }) => (
+    <div style={HelloStyle}>
+        Hello, {name}
     </div>
 );
 
 const App = () => (
     <div>
-        <Hello />
-        <World />
+        <Hello name="WA!" />
     </div>
 );
 
