@@ -1,8 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = () => (
+const Hello = () => (
     <div>Hello-WA!</div>
+);
+
+const App = () => (
+    <div>
+        <Hello />
+    </div>
 );
 
 const render = () => ReactDOM.render(
