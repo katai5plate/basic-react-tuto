@@ -7,19 +7,19 @@ const HelloStyle = {
     "font-size": "48px"
 };
 
-const Hello = ({ name, color }) => (
+const Hello = ({ name, color, extention }) => (
     <div style={HelloStyle}>
         <p style={{ color }}>
-            Hello, {name}
+            Hello, {name}{("!".repeat(extention))}
         </p>
     </div>
 );
 
 const App = () => (
     <div>
-        <Hello name="WA!" color="yellowgreen" />
-        <Hello name="WA!!" color="yellow" />
-        <Hello name="WA!!!" color="red" />
+        <Hello name="WA" color="yellowgreen" extention="1"/>
+        <Hello name="WA" color="yellow" extention="3"/>
+        <Hello name="WA" color="red" extention="5"/>
     </div>
 );
 
