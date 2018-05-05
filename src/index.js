@@ -30,21 +30,29 @@ const MyForm = () => (
     </div>
 );
 
-// 文字列表示
-const Hello = ({ name, color }) => (
+// 削除可能版
+const Hello = ({ name, color, onDelete }) => (
     <div>
-        <p style={{ color }}>
-            Hello, {name}!
+        <p>
+            <span style={{ color }}>
+                Hello, {name}!
+            </span>
+            <button onClick={() => onDelete()}>DEL</button>
         </p>
     </div>
 );
+// 削除処理
+const deleteItem = (index) => {
+    items.splice(index, 1);
+    render();
+}
 
 const App = () => (
     <div>
         <MyForm />
         {
-            items.map((item) => (
-                <Hello name={item.name} color={item.color} />
+            items.map((item, index) => (
+                <Hello name={item.name} color={item.color} onDelete={() => deleteItem(index)} />
             ))
         }
     </div>
