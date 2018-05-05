@@ -1,17 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const HelloStyle = {
-    "color": "red",
-    "background-color": "black",
-    "font-size": "48px"
-};
-
 const items = [
     { name: "aaa", color: "black" },
     { name: "bbb", color: "brown" },
     { name: "ccc", color: "red" },
     { name: "ddd", color: "blue" },
+    { name: "eee", color: "green" },
 ];
 
 const Hello = ({ name, color }) => (
