@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 
 const MyButton = () => (
     <div>
-        <button>Click Me!</button>
+        <button onClick={() => alert("HIT!")}>
+            Click Me!
+        </button>
     </div>
 );
 
