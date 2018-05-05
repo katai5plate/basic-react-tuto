@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const HelloStyle = { color: "red" };
+
 const Hello = () => (
-    <div>Hello-WA!</div>
+    <div style={ HelloStyle }>
+        Hello-WA!
+    </div>
 );
 
 const App = () => (
