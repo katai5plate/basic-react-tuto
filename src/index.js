@@ -1,12 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const randExt = ()=>Math.random()*10;
 const items = [
-    { name: "aaa", color: "black", ext: 1 },
-    { name: "bbb", color: "brown", ext: 2 },
-    { name: "ccc", color: "red", ext: 4 },
-    { name: "ddd", color: "blue", ext: 5 },
-    { name: "eee", color: "green", ext: 8 },
+    [
+        { name: "aaa", color: "black", ext: randExt() },
+        { name: "bbb", color: "brown", ext: randExt() },
+        { name: "ccc", color: "red", ext: randExt() },
+        { name: "ddd", color: "blue", ext: randExt() },
+        { name: "eee", color: "green", ext: randExt() },
+    ],
+    [
+        { name: "aaa", color: "gray", ext: randExt() },
+        { name: "bbb", color: "aqua", ext: randExt() },
+        { name: "ccc", color: "orange", ext: randExt() },
+        { name: "ddd", color: "purple", ext: randExt() },
+        { name: "eee", color: "lightgray", ext: randExt() },
+    ],
 ];
 
 const Hello = ({ name, color, ext }) => (
@@ -20,9 +30,11 @@ const Hello = ({ name, color, ext }) => (
 const App = () => (
     <div>
         {
-            items.map((item) => (
-                <Hello name={item.name} color={item.color} ext={item.ext}/>
-            ))
+            items.map((item) => {
+                return item.map((i)=>(
+                    <Hello name={i.name} color={i.color} ext={i.ext}/>
+                ))
+            })
         }
     </div>
 );
