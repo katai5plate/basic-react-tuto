@@ -16,16 +16,31 @@ const setNameData = (event) => {
     nameData = event.target.value;
     render();
 }
+// 同期する色名
+let colorData = "";
+// inputの入力制御・colorDataとの同期
+const setColorData = (event) => {
+    colorData = event.target.value;
+    render();
+}
 // データ追加
 const addData = () => {
-    items.push({ name: nameData, color: "black" });
+    items.push({ name: nameData, color: colorData });
     nameData = "";
     render();
 }
+
 // フォーム
 const MyForm = () => (
     <div>
-        <input type="text" value={nameData} onChange={setNameData} />
+        <p>
+            名前：
+            <input type="text" value={nameData} onChange={setNameData} />
+        </p>
+        <p>
+            色：
+            <input type="text" value={colorData} onChange={setColorData} />
+        </p>
         <button onClick={addData}>Add Data</button>
     </div>
 );
