@@ -13,14 +13,18 @@ const MyButton = () => (
 let textData = "";
 // onChange、つまり値が更新された時の処理
 const setTextData = (event) => {
-    // 変更後の値 = 変更直後の値
+    // 変更後の値 = 変更直後の値１
     textData = event.target.value;
     // 20文字より多く入力できないようにする
     ((leng) => {
         if (textData.length > leng) {
             textData = textData.slice(0, leng);
         }
-    })(20)
+    })(20);
+    // 数字を使えなくする
+    if (/[0-9]|[０-９]/.test(textData)) return;
+    // 小文字を大文字にする
+    textData = textData.toUpperCase()
     // これがないと正常に入力操作ができない。
     // なぜならデータ変更しても自動では再描画されないから。
     render();
