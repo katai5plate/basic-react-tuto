@@ -109,11 +109,30 @@ const deleteItem = (index) => {
     render();
 }
 
+class TestSetState extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            x: 0,
+        }
+    }
+    render() {
+        return (
+            <div>
+                <button onClick={
+                    () => this.setState({ x: this.state.x + 1 })
+                }>{this.state.x}</button>
+            </div>
+        )
+    }
+}
+
 
 class App extends React.Component {
     render() {
         return (
             <div>
+                <TestSetState />
                 <MyForm />
                 {
                     items.map((item, index) => (
